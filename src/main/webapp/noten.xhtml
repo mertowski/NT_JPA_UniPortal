@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<f:view contentType="text/html">
+    <h:head>
+        <f:facet name="first">
+            <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+            <title>Login</title>
+        </f:facet>
+    </h:head>
+    <h:body>
+        <p:layout fullPage="true">
+            <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                <h1 align="center">Universität-Informations-Portal</h1>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                <h3 align="center">Universität ABC</h3>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+                <h:form style="text-align: center">
+                    <p:messages />
+                    <h2>Noteneingabe</h2>
+                    <h:outputLabel for="matriculationNumber" />
+                    <p:inputText id="matriculationNumber" placeholder="Matrikelnummer" style="width:290px" value="#{studentController.student.matriculationNumber}" required="true" requiredMessage="Bitte geben Sie die Matrikelnummer ein!" label="Matrikelnummer"/>
+                    <br/><br/>
+                    <p:inputText id="name" placeholder="Name" style="width:290px" value="#{studentController.student.name}" required="true" requiredMessage="Bitte geben Sie den Name ein!" validatorMessage="Bitte nur Buchstaben von 'A' bis 'Z' eingeben!" label="Name">
+                        <f:validateRegex pattern="^[a-z A-Z]+$" />
+                    </p:inputText>
+                    <br/><br/>
+                    <h:outputLabel for="note" />
+                    <p:inputText id="note" placeholder="Note" style="width:290px" value="#{studentController.student.note}" required="true" requiredMessage="Bitte geben Sie die Note ein!" label="Note" />
+                    <br/><br/>
+                    <p:selectOneMenu id="lectures" value="#{studentController.student.lecture}" style="width:298px" required="true" requiredMessage="Bitte wählen Sie das Fach aus!" label="Fach">
+                        <f:selectItem itemLabel="Wählen Sie ein Fach" />
+                        <f:selectItem itemLabel="Grundlagen der Informatik" itemValue="Grundlagen der Informatik" />
+                        <f:selectItem itemLabel="Fortgeschrittene Programmierung" itemValue="Fortgeschrittene Programmierung" />
+                        <f:selectItem itemLabel="Verteilte Systeme" itemValue="Verteilte Systeme" />
+                        <f:selectItem itemLabel="IT-Sicherheit" itemValue="IT-Sicherheit" />
+                        <f:selectItem itemLabel="Wahlfächer 1" itemValue="Wahlfächer 1" />
+                        <f:selectItem itemLabel="Wahlfächer 2" itemValue="Wahlfächer 2" />
+                    </p:selectOneMenu><br/><br/>
+                    <p:commandButton value="Save"  ajax="false" action="#{studentController.save}"  icon="ui-icon-disk" validateClient="true"/>
+                    <p:commandButton value="Abbrechen" ajax="false" action="#{studentController.cancel}"  icon="ui-icon-close"/>
+                    <p:commandButton value="Reset">
+                        <p:ajax update="matriculationNumber, name, note, lectures" resetValues="true" />
+                    </p:commandButton><br/><br/>
+                    <p:commandButton value="Startseite" action="#{studentController.startPage}"  icon="ui-icon-extlink"/>
+                </h:form>
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+</f:view>
+</HTML>

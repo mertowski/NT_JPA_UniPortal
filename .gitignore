@@ -1,0 +1,32 @@
+target/
+bin/
+*.log
+*.jsfdia
+TestBean.java
+*TestEntity.java
+test.xhtml
+*.jasper
+.project
+.classpath
+.settings/
+*.sh
+.DS_Store
+rebel.xml
+.xml/
+nb-configuration.xml
+nbactions.xml
+.ruleset~
+standalone_xml_history/
+.pmd
+.eclipse-pmd
+# NetBeans IDE #
+################
+/*/nbproject/
+/HumanResourcesSystem/faces-config.NavData
+# IntelliJ IDE #
+################
+.idea/*
+*.iml
+/HRS/.idea/
+/integrations/.idea/
+/core/.idea/
