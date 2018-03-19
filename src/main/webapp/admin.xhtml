@@ -45,6 +45,7 @@
                             <h:outputText value="#{student.note}" rendered="#{not student.editable}"/>
                         </p:column>
 
+
                         <p:column headerText="">
                             <h:commandLink value="Ändern" actionListener="#{studentController.editAction(student)}"
                                            rendered="#{not student.editable}"/>
